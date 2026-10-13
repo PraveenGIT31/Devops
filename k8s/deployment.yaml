@@ -36,7 +36,7 @@ spec:
         - name: devops-app
           # Replace <your-dockerhub-username> with your actual Docker Hub username
           # GitHub Actions will update this image tag automatically on each build
-          image: praveengit31/devops-app:latest
+          image: praveendockman/devops-app:latest
           imagePullPolicy: Always
 
           ports:
