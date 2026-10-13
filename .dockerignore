@@ -1,0 +1,29 @@
+# Files and directories to exclude from Docker build context
+# This keeps the Docker image small and build fast
+
+# Git
+.git
+.gitignore
+
+# GitHub Actions
+.github
+
+# Kubernetes manifests (not needed inside container)
+k8s/
+
+# Docs
+*.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Node (if added later)
+node_modules/
+npm-debug.log

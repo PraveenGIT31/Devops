@@ -1,0 +1,49 @@
+# ================================================
+# k8s/service.yaml
+# Kubernetes Service — exposes the app to external traffic
+# ================================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-service
+  namespace: default
+  labels:
+    app: devops-app
+spec:
+  # NodePort: works locally with minikube
+  # Change to LoadBalancer when deploying to cloud (GKE, EKS, AKS)
+  type: NodePort
+
+  selector:
+    app: devops-app   # Matches pods from the Deployment
+
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80          # Port exposed by the Service (cluster-internal)
+      targetPort: 80    # Port on the Pod (nginx)
+      nodePort: 30080   # External port on the Node (range: 30000–32767)
+                        # Access via: http://<minikube-ip>:30080
+                        # Or: minikube service devops-service
+
+---
+# ================================================
+# Optional: For cloud providers, use LoadBalancer
+# Uncomment the block below and comment out the
+# NodePort block above when deploying to cloud.
+# ================================================
+#
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: devops-service-lb
+#   namespace: default
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: devops-app
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80

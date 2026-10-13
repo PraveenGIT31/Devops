@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DevOps Journey - A learning project exploring GitHub, Docker, and Kubernetes deployment pipelines." />
+  <title>DevOps Journey | GitHub · Docker · Kubernetes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Canvas for particle animation -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">⚙️</span>
+        <span class="logo-text">DevOps<span class="logo-accent">Journey</span></span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#pipeline" class="nav-link" id="nav-pipeline">Pipeline</a></li>
+        <li><a href="#stack" class="nav-link" id="nav-stack">Stack</a></li>
+        <li><a href="#steps" class="nav-link" id="nav-steps">Steps</a></li>
+        <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge" id="hero-badge">
+        <span class="badge-dot"></span>
+        Live Deployment Pipeline
+      </div>
+      <h1 class="hero-title" id="hero-title">
+        DevOps<br />
+        <span class="gradient-text">Journey</span>
+      </h1>
+      <p class="hero-subtitle" id="hero-subtitle">
+        Building, Automating &amp; Scaling the Future of Software with
+        <strong>GitHub</strong>, <strong>Docker</strong> &amp; <strong>Kubernetes</strong>.
+      </p>
+      <div class="hero-icons" id="hero-icons">
+        <div class="tech-icon" title="GitHub" id="icon-github">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </div>
+        <div class="tech-icon" title="Docker" id="icon-docker">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.300 2.61-2.172 1.252-1.42 1.998-3.005 2.553-4.414h.221c1.372 0 2.216-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288z"/></svg>
+        </div>
+        <div class="tech-icon" title="Kubernetes" id="icon-k8s">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 01-2.075-2.597l2.578-.437.004.005.485.606zm-.833-3.281a1.404 1.404 0 00.387.83l-1.524 2.04-.007-.003A5.157 5.157 0 018 12c0-.62.107-1.2.296-1.736l2.034.61.001.005-.96.19zm6.664 1.281c0 .593-.097 1.164-.276 1.697l-2.58-.436-.001.009.001-.009.002-.006.484-.602-1.004-2.424a5.164 5.164 0 012.09 2.612l-2.558.434.014-.018zm-5.14 1.16l-.007-.01.463-.576 2.514.425.001.012a5.17 5.17 0 01-2.971.15zm-.274-2.534l-.487-.61 1.01-2.44a5.145 5.145 0 012.056 2.598l-2.579.452zm1.375-2.728l-1.021 2.469-.01.002-.977-1.229-2.007-.603a5.172 5.172 0 012.985-1.698l1.03 1.059zm-.58 3.053l.444.555-1.024 2.472a5.166 5.166 0 01-2.04-2.601l2.606-.44.014.014zM12 5a7 7 0 100 14A7 7 0 0012 5zM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12z"/></svg>
+        </div>
+        <div class="tech-icon" title="Cloud" id="icon-cloud">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+        </div>
+      </div>
+      <div class="hero-cta" id="hero-cta">
+        <a href="#pipeline" class="btn btn-primary" id="btn-explore">Explore Pipeline</a>
+        <a href="https://github.com/PraveenGIT31/Devops" target="_blank" rel="noopener" class="btn btn-ghost" id="btn-github">
+          View on GitHub →
+        </a>
+      </div>
+    </div>
+    <div class="hero-terminal" id="hero-terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">bash</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-line"><span class="prompt">$</span> <span class="cmd" id="t-line-1"></span></div>
+        <div class="terminal-line"><span class="prompt">$</span> <span class="cmd" id="t-line-2"></span></div>
+        <div class="terminal-line"><span class="prompt">$</span> <span class="cmd" id="t-line-3"></span></div>
+        <div class="terminal-line output" id="t-output-1"></div>
+        <div class="terminal-line"><span class="prompt">$</span> <span class="cmd" id="t-line-4"></span></div>
+        <div class="terminal-line output success" id="t-output-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline Section -->
+  <section class="pipeline-section" id="pipeline">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-badge">CI/CD</span>
+        <h2 class="section-title">Deployment Pipeline</h2>
+        <p class="section-desc">From code commit to running container — a fully automated workflow.</p>
+      </div>
+      <div class="pipeline-flow" id="pipeline-flow">
+        <div class="pipeline-step" id="pipeline-step-1">
+          <div class="step-icon" style="--clr: #7c3aed;">💻</div>
+          <div class="step-content">
+            <h3>Code Push</h3>
+            <p>Developer pushes code to GitHub repository on the <code>main</code> branch</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step" id="pipeline-step-2">
+          <div class="step-icon" style="--clr: #0ea5e9;">⚡</div>
+          <div class="step-content">
+            <h3>GitHub Actions</h3>
+            <p>CI workflow triggers automatically — builds and tests the application</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step" id="pipeline-step-3">
+          <div class="step-icon" style="--clr: #2196f3;">🐳</div>
+          <div class="step-content">
+            <h3>Docker Build</h3>
+            <p>Docker image built from <code>Dockerfile</code> and pushed to Docker Hub registry</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step" id="pipeline-step-4">
+          <div class="step-icon" style="--clr: #326ce5;">☸️</div>
+          <div class="step-content">
+            <h3>K8s Deploy</h3>
+            <p>Kubernetes pulls the new image and performs a zero-downtime rolling update</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section class="stack-section" id="stack">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-badge">Technologies</span>
+        <h2 class="section-title">Tech Stack</h2>
+        <p class="section-desc">Every tool in this pipeline, and why we use it.</p>
+      </div>
+      <div class="stack-grid" id="stack-grid">
+        <div class="stack-card" id="card-github">
+          <div class="card-glow"></div>
+          <div class="card-icon github-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <h3>GitHub</h3>
+          <p>Source control &amp; CI/CD with GitHub Actions. Triggers the entire pipeline on every commit.</p>
+          <div class="card-tags">
+            <span class="tag">Version Control</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Actions</span>
+          </div>
+        </div>
+        <div class="stack-card" id="card-docker">
+          <div class="card-glow"></div>
+          <div class="card-icon docker-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.300 2.61-2.172 1.252-1.42 1.998-3.005 2.553-4.414h.221c1.372 0 2.216-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288z"/></svg>
+          </div>
+          <h3>Docker</h3>
+          <p>Containerize the app with <code>nginx:alpine</code>. Build once, run anywhere — consistent environments.</p>
+          <div class="card-tags">
+            <span class="tag">Container</span>
+            <span class="tag">nginx:alpine</span>
+            <span class="tag">Image</span>
+          </div>
+        </div>
+        <div class="stack-card" id="card-k8s">
+          <div class="card-glow"></div>
+          <div class="card-icon k8s-icon">☸️</div>
+          <h3>Kubernetes</h3>
+          <p>Orchestrate containers with rolling deployments, self-healing, scaling, and load balancing.</p>
+          <div class="card-tags">
+            <span class="tag">Orchestration</span>
+            <span class="tag">Scaling</span>
+            <span class="tag">minikube</span>
+          </div>
+        </div>
+        <div class="stack-card" id="card-nginx">
+          <div class="card-glow"></div>
+          <div class="card-icon nginx-icon">🌐</div>
+          <h3>Nginx</h3>
+          <p>High-performance web server serving the static site. Lightweight, fast, and production-ready.</p>
+          <div class="card-tags">
+            <span class="tag">Web Server</span>
+            <span class="tag">Static Files</span>
+            <span class="tag">Reverse Proxy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps Section -->
+  <section class="steps-section" id="steps">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-badge">How To</span>
+        <h2 class="section-title">Run It Yourself</h2>
+        <p class="section-desc">Step-by-step commands to build and deploy this project locally.</p>
+      </div>
+      <div class="steps-grid" id="steps-grid">
+        <div class="step-card" id="step-card-1">
+          <div class="step-number">01</div>
+          <h3>Clone &amp; Run Locally</h3>
+          <pre><code>git clone https://github.com/PraveenGIT31/Devops.git
+cd Devops
+open app/index.html</code></pre>
+        </div>
+        <div class="step-card" id="step-card-2">
+          <div class="step-number">02</div>
+          <h3>Build Docker Image</h3>
+          <pre><code>docker build -t devops-app:latest .
+docker run -d -p 8080:80 devops-app:latest
+# Visit http://localhost:8080</code></pre>
+        </div>
+        <div class="step-card" id="step-card-3">
+          <div class="step-number">03</div>
+          <h3>Push to Docker Hub</h3>
+          <pre><code>docker tag devops-app:latest &lt;username&gt;/devops-app:latest
+docker push &lt;username&gt;/devops-app:latest</code></pre>
+        </div>
+        <div class="step-card" id="step-card-4">
+          <div class="step-number">04</div>
+          <h3>Deploy to Kubernetes</h3>
+          <pre><code>minikube start
+kubectl apply -f k8s/
+kubectl get pods
+minikube service devops-service</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <span class="logo-icon">⚙️</span>
+        <span class="logo-text">DevOps<span class="logo-accent">Journey</span></span>
+      </div>
+      <p class="footer-desc">A learning project to master GitHub → Docker → Kubernetes deployments.</p>
+      <div class="footer-links">
+        <a href="https://github.com/PraveenGIT31/Devops" target="_blank" rel="noopener" id="footer-github">GitHub Repo</a>
+        <a href="https://docs.docker.com" target="_blank" rel="noopener" id="footer-docker">Docker Docs</a>
+        <a href="https://kubernetes.io/docs" target="_blank" rel="noopener" id="footer-k8s">K8s Docs</a>
+      </div>
+      <p class="footer-copy">© 2024 DevOps Journey. Built to learn. Deployed to inspire.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

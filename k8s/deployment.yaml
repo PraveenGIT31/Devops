@@ -1,0 +1,70 @@
+# ================================================
+# k8s/deployment.yaml
+# Kubernetes Deployment for DevOps Journey app
+# ================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-app
+  namespace: default
+  labels:
+    app: devops-app
+    version: "1.0.0"
+spec:
+  # Number of pod replicas for high availability
+  replicas: 2
+
+  # Pod selector
+  selector:
+    matchLabels:
+      app: devops-app
+
+  # Rolling update strategy — zero downtime deployments
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1         # Allow 1 extra pod during update
+      maxUnavailable: 0   # Keep all pods running during update
+
+  template:
+    metadata:
+      labels:
+        app: devops-app
+    spec:
+      containers:
+        - name: devops-app
+          # Replace <your-dockerhub-username> with your actual Docker Hub username
+          # GitHub Actions will update this image tag automatically on each build
+          image: praveengit31/devops-app:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+          # Resource limits — prevents the container from hogging node resources
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "64Mi"
+              cpu: "100m"
+
+          # Liveness probe — K8s restarts pod if it becomes unhealthy
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3
+
+          # Readiness probe — pod only receives traffic when ready
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
